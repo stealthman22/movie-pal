@@ -35,5 +35,10 @@
 N.B: Check out what finally means in try catch blocks
 - Never have state as  dependency of setstate, else you will run into an infinityloop.
  
+- always avoicd infinite loops (using dependency arrays help)
+
+- Always specify your dependencies in your useEffect
+
+- Custom hooks should always have the prefix use in the filename
 
  <!-- How do we use momoization to optimize a react app? -->
