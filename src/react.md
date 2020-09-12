@@ -39,6 +39,6 @@ N.B: Check out what finally means in try catch blocks
 
 - Always specify your dependencies in your useEffect
 
-- Custom hooks should always have the prefix use in the filename
+- Custom hooks should always have the prefix use in the filename,followed by name of primary component using it.
 
  <!-- How do we use momoization to optimize a react app? -->
