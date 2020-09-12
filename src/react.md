@@ -24,3 +24,14 @@
 
     3. Because you have to return only one component, you moslty wrap everything in a div
     But if you don't wanna use a div, use a react fragment
+
+
+
+### Hooks
+- With hooks you can have as many state as you want in your functional components.
+
+- // Set initial state to an empty array,
+	// Else is we loop before receiving data from api, app throws an erros
+N.B: Check out what finally means in try catch blocks
+- Never have state as  dependency of setstate, else you will run into an infinityloop.
+ 
