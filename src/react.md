@@ -35,3 +35,5 @@
 N.B: Check out what finally means in try catch blocks
 - Never have state as  dependency of setstate, else you will run into an infinityloop.
  
+
+ <!-- How do we use momoization to optimize a react app? -->
