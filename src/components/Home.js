@@ -1,5 +1,5 @@
 // Call in react hooks api
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import api values from config js
 import {
 	API_URL,
@@ -25,8 +25,13 @@ import MovieThumb from "./elements/MovieThumb";
 
 //  Import custom hook
 import { useHomeFetch } from "./hooks/useHomeFetch";
+
+import NoImage from "./images/no_image.jpg";
+
 const Home = () => {
 	const [ { state, loading, error }, fetchMovies ] = useHomeFetch();
+	// Let's create a search box state
+	const { searchTerm, setSearchTerm } = useState("");
 	console.log(state);
 
 	if (error) return <div>Something went wrong...</div>;
@@ -41,8 +46,11 @@ const Home = () => {
 				title={state.heroImage.original_title}
 				text={state.heroImage.overview}
 			/>
+
 			<SearchBar />
-			<Grid />
+
+			{/* header here is a prop */}
+			<Grid hea />
 			<MovieThumb />
 			<Spinner />
 			<LoadMoreBtn />

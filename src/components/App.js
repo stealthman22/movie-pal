@@ -3,12 +3,14 @@ import React from "react";
 //  user defined components
 import Header from "./elements/Header";
 import Home from "./Home";
+import { GlobalStyle } from "./styles/GlobalStyle";
 
 const App = () => (
-	<div>
-		<Header /> Start Here!
+	<React.Fragment>
+		<Header />
 		<Home />
-	</div>
+		<GlobalStyle />
+	</React.Fragment>
 );
 
 export default App;

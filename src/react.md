@@ -59,3 +59,5 @@ styled components isolate your styles to one component at a time and prevents th
 I would prefer to destructure my props
 
 Use { } around imports when they are not coming in as default.
+
+Use styled components create global style to create a syle for the entire application
