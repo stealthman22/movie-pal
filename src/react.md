@@ -42,3 +42,20 @@ N.B: Check out what finally means in try catch blocks
 - Custom hooks should always have the prefix use in the filename,followed by name of primary component using it.
 
  <!-- How do we use momoization to optimize a react app? -->
+
+
+ ### Styled Components
+ - Learn how to create a styled basic styled component
+ - Learn how to handle props in styled component
+ - Create a global style with styled components
+
+ Look up tagged functions
+
+ Props in  a way behave like dynamic properties
+When content could change, you can use a prop
+
+styled components isolate your styles to one component at a time and prevents things from getting messy
+
+I would prefer to destructure my props
+
+Use { } around imports when they are not coming in as default.
