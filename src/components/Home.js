@@ -29,22 +29,24 @@ import { useHomeFetch } from "./hooks/useHomeFetch";
 import NoImage from "./images/no_image.jpg";
 
 const Home = () => {
-	const [ { state, loading, error }, fetchMovies ] = useHomeFetch();
+	const [
+		// state has been destrucured further
+		{ state: { movies, currentPage, totalPages, heroImage }, loading, error },
+		fetchMovies,
+	] = useHomeFetch();
 	// Let's create a search box state
 	const { searchTerm, setSearchTerm } = useState("");
-	console.log(state);
 
 	if (error) return <div>Something went wrong...</div>;
 	// Nothing shows on first render so prevent crash by:
-	if (!state.movies[0]) return <Spinner />;
+	if (!movies[0]) return <Spinner />;
 
 	return (
 		<React.Fragment>
 			<HeroImage
-				image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.heroImage
-					.backdrop_path}`}
-				title={state.heroImage.original_title}
-				text={state.heroImage.overview}
+				image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.backdrop_path}`}
+				title={heroImage.original_title}
+				text={heroImage.overview}
 			/>
 
 			<SearchBar />
@@ -56,12 +58,21 @@ const Home = () => {
 						searchTerm ? "Search Result" :
 						"Popular Movies"
 				}>
-				{state.movies.map => (
-					<MovieThumb key={movie.id} 
+				{movies.map((movie) => (
+					<MovieThumb
+						key={movie.id}
+						// same as clickable=true
 						clickable
-						image={state.movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
+						// note that we are not getting this image from the state
+						image={
+
+								movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}` :
+								NoImage
+						}
+						movieId={movie.id}
+						movieName={movie.original_title}
 					/>
-				)}
+				))}
 			</Grid>
 			<MovieThumb />
 			<Spinner />

@@ -15,7 +15,7 @@ export const useHomeFetch = () => {
 		// Await the data, then await again to first parse it into json
 		try {
 			const result = await (await fetch(endpoint)).json();
-			// extra () make it treat this as an obkect not at funcion
+			// extra () make it treat this as an object not at funcion
 			setState((prev) => ({
 				...prev,
 				// The returned movies

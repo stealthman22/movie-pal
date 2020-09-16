@@ -65,3 +65,5 @@ Use styled components create global style to create a syle for the entire applic
 we must always provide a key in react when we loop through things 
 
 Props in jsx default to true unless we gve it a value
+
+If you do not want to keep typing out state, it makes sense to destructure it further, using mulitlevel destructuring
