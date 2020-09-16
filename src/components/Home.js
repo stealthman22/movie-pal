@@ -50,7 +50,19 @@ const Home = () => {
 			<SearchBar />
 
 			{/* header here is a prop */}
-			<Grid hea />
+			<Grid
+				header={
+
+						searchTerm ? "Search Result" :
+						"Popular Movies"
+				}>
+				{state.movies.map => (
+					<MovieThumb key={movie.id} 
+						clickable
+						image={state.movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
+					/>
+				)}
+			</Grid>
 			<MovieThumb />
 			<Spinner />
 			<LoadMoreBtn />

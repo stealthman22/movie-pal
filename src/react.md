@@ -61,3 +61,7 @@ I would prefer to destructure my props
 Use { } around imports when they are not coming in as default.
 
 Use styled components create global style to create a syle for the entire application
+
+we must always provide a key in react when we loop through things 
+
+Props in jsx default to true unless we gve it a value
