@@ -11,6 +11,11 @@ export const useHomeFetch = () => {
 		setError(false);
 		setLoading(true);
 
+		// this would help us choose endpoint, by searching through the string
+		// search is a string method returns -1 if it doesn't find query
+
+		const isLoadMore = endpoint.search("page");
+
 		// try catch block
 		// Await the data, then await again to first parse it into json
 		try {
@@ -19,7 +24,10 @@ export const useHomeFetch = () => {
 			setState((prev) => ({
 				...prev,
 				// The returned movies
-				movies: [ ...result.results ],
+				movies:
+
+						isLoadMore !== -1 ? [ ...prev.movies, ...result.results ] :
+						[ ...result.results ],
 				// Short circuiting
 				heroImage: prev.heroImage || result.results[0],
 				currentPage: result.page,
@@ -42,3 +50,7 @@ export const useHomeFetch = () => {
 
 	return [ { state, loading, error }, fetchMovies ];
 };
+
+// In the fetch movies fucntion, after building isloadmore method, next we have to restructure state
+//  if we load more movies (), we want to append the new movies, and keep the old movies in the state
+// else we want to wipe out the old movies and display the new one
