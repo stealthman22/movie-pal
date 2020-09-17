@@ -59,3 +59,25 @@ styled components isolate your styles to one component at a time and prevents th
 I would prefer to destructure my props
 
 Use { } around imports when they are not coming in as default.
+
+Use styled components create global style to create a syle for the entire application
+
+we must always provide a key in react when we loop through things 
+
+Props in jsx default to true unless we gve it a value
+
+If you do not want to keep typing out state, it makes sense to destructure it further, using mulitlevel destructuring
+
+
+### Controlled components
+
+ When state value and input value are always insync. That means they direclty affect each other.
+
+ When creating input fields in html, there is a inbuilt state function that controls things.
+ In react we can take over from this state and assign that job ot our own state.
+
+ ### useref
+- when you have a value that you want to mutate, or keep between rendrs, you use a ref
+
+
+### Never create functional state as an object, else this will make setstate a funtion, and throw an error

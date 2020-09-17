@@ -1,10 +1,9 @@
 // Call in react hooks api
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import api values from config js
 import {
-	API_URL,
-	API_KEY,
-	API_BASE_URL,
+	POPULAR_BASELINE_URL,
+	SEARCH_BASELINE_URL,
 	POSTER_SIZE,
 	BACKDROP_SIZE,
 	IMAGE_BASE_URL,
@@ -25,27 +24,88 @@ import MovieThumb from "./elements/MovieThumb";
 
 //  Import custom hook
 import { useHomeFetch } from "./hooks/useHomeFetch";
+
+import NoImage from "./images/no_image.jpg";
+
 const Home = () => {
-	const [ { state, loading, error }, fetchMovies ] = useHomeFetch();
-	console.log(state);
+	const [
+		// state has been destrucured further
+		{ state: { movies, currentPage, totalPages, heroImage }, loading, error },
+		fetchMovies,
+	] = useHomeFetch();
+	// Let's create a search box state
+	// func state is an array don't forget
+	const [ searchTerm, setSearchTerm ] = useState("");
+
+	const searchMovies = (search) => {
+		const endpoint =
+			search ? SEARCH_BASELINE_URL + search :
+			POPULAR_BASELINE_URL;
+
+		setSearchTerm(search);
+		fetchMovies(endpoint);
+	};
+
+	const loadMoreMovies = () => {
+		const searchEndPoint = `${SEARCH_BASELINE_URL}${searchTerm}&page=${currentPage +
+			1}`;
+		const popularEndPoint = `${POPULAR_BASELINE_URL}&page=${currentPage + 1}`;
+
+		const endpoint =
+			searchTerm ? searchEndPoint :
+			popularEndPoint;
+
+		fetchMovies(endpoint);
+	};
 
 	if (error) return <div>Something went wrong...</div>;
 	// Nothing shows on first render so prevent crash by:
-	if (!state.movies[0]) return <Spinner />;
+	if (!movies[0]) return <Spinner />;
 
 	return (
 		<React.Fragment>
-			<HeroImage
-				image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.heroImage
-					.backdrop_path}`}
-				title={state.heroImage.original_title}
-				text={state.heroImage.overview}
-			/>
-			<SearchBar />
-			<Grid />
-			<MovieThumb />
-			<Spinner />
-			<LoadMoreBtn />
+			{/* wehn searching don't show home */}
+			{!searchTerm && (
+				<HeroImage
+					image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.backdrop_path}`}
+					title={heroImage.original_title}
+					text={heroImage.overview}
+				/>
+			)}
+			``
+			<SearchBar callback={searchMovies} />
+			{/* header here is a prop */}
+			<Grid
+				header={
+
+						searchTerm ? "Search Result" :
+						"Popular Movies"
+				}>
+				{movies.map((movie) => (
+					<MovieThumb
+						key={movie.id}
+						// same as clickable=true
+						clickable
+						// note that we are not getting this image from the state
+						image={
+
+								movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}` :
+								NoImage
+						}
+						movieId={movie.id}
+						movieName={movie.original_title}
+					/>
+				))}
+			</Grid>
+			{/* this is a short circuit, same as loading ? <Spinner /> :
+				"" */}
+			{loading && <Spinner />}
+			{/* and yet another shortcircuit
+				restrains loadmore btn from showing when we are loading, and doesn't 
+				show when we are on last page, after grabbing all movies
+			 */}
+			{currentPage < totalPages &&
+			!loading && <LoadMoreBtn text="Load More" callback={loadMoreMovies} />}
 		</React.Fragment>
 	);
 };
