@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_URL, API_KEY } from "../../config";
+import { POPULAR_BASELINE_URL } from "../../config";
 
 export const useHomeFetch = () => {
 	const [ state, setState ] = useState({ movies: [] });
@@ -42,7 +42,7 @@ export const useHomeFetch = () => {
 
 	// trigger fetchMovies func (used lifecycle methods previously)
 	useEffect(() => {
-		fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}`);
+		fetchMovies(POPULAR_BASELINE_URL);
 		// empty array is called a dependency array
 		// prevents endpoint from running every render
 		// it runs it once the component is mounted at app start

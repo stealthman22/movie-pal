@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 // import api values from config js
 import {
-	API_URL,
-	API_KEY,
+	POPULAR_BASELINE_URL,
+	SEARCH_BASELINE_URL,
 	POSTER_SIZE,
 	BACKDROP_SIZE,
 	IMAGE_BASE_URL,
@@ -34,13 +34,22 @@ const Home = () => {
 		fetchMovies,
 	] = useHomeFetch();
 	// Let's create a search box state
-	const { searchTerm, setSearchTerm } = useState("");
+	// func state is an array don't forget
+	const [ searchTerm, setSearchTerm ] = useState("");
+
+	const searchMovies = (search) => {
+		const endpoint =
+			search ? SEARCH_BASELINE_URL + search :
+			POPULAR_BASELINE_URL;
+
+		setSearchTerm(search);
+		fetchMovies(endpoint);
+	};
 
 	const loadMoreMovies = () => {
-		const searchEndPoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${currentPage +
+		const searchEndPoint = `${SEARCH_BASELINE_URL}${searchTerm}&page=${currentPage +
 			1}`;
-		const popularEndPoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${currentPage +
-			1}`;
+		const popularEndPoint = `${POPULAR_BASELINE_URL}&page=${currentPage + 1}`;
 
 		const endpoint =
 			searchTerm ? searchEndPoint :
@@ -55,14 +64,16 @@ const Home = () => {
 
 	return (
 		<React.Fragment>
-			<HeroImage
-				image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.backdrop_path}`}
-				title={heroImage.original_title}
-				text={heroImage.overview}
-			/>
-
-			<SearchBar />
-
+			{/* wehn searching don't show home */}
+			{!searchTerm && (
+				<HeroImage
+					image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.backdrop_path}`}
+					title={heroImage.original_title}
+					text={heroImage.overview}
+				/>
+			)}
+			``
+			<SearchBar callback={searchMovies} />
 			{/* header here is a prop */}
 			<Grid
 				header={

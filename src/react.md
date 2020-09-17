@@ -67,3 +67,17 @@ we must always provide a key in react when we loop through things
 Props in jsx default to true unless we gve it a value
 
 If you do not want to keep typing out state, it makes sense to destructure it further, using mulitlevel destructuring
+
+
+### Controlled components
+
+ When state value and input value are always insync. That means they direclty affect each other.
+
+ When creating input fields in html, there is a inbuilt state function that controls things.
+ In react we can take over from this state and assign that job ot our own state.
+
+ ### useref
+- when you have a value that you want to mutate, or keep between rendrs, you use a ref
+
+
+### Never create functional state as an object, else this will make setstate a funtion, and throw an error
