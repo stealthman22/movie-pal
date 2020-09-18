@@ -36,7 +36,7 @@ const Home = () => {
 	// Let's create a search box state
 	// func state is an array don't forget
 	const [ searchTerm, setSearchTerm ] = useState("");
-
+	console.log(searchTerm);
 	const searchMovies = (search) => {
 		const endpoint =
 			search ? SEARCH_BASELINE_URL + search :
@@ -49,6 +49,7 @@ const Home = () => {
 	const loadMoreMovies = () => {
 		const searchEndPoint = `${SEARCH_BASELINE_URL}${searchTerm}&page=${currentPage +
 			1}`;
+
 		const popularEndPoint = `${POPULAR_BASELINE_URL}&page=${currentPage + 1}`;
 
 		const endpoint =
