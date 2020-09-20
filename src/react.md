@@ -81,3 +81,6 @@ If you do not want to keep typing out state, it makes sense to destructure it fu
 
 
 ### Never create functional state as an object, else this will make setstate a funtion, and throw an error
+
+- Reach router,  should be used for mid level apps with less complex routing systems.
+
