@@ -84,3 +84,5 @@ If you do not want to keep typing out state, it makes sense to destructure it fu
 
 - Reach router,  should be used for mid level apps with less complex routing systems.
 
+
+- Learn to scaffold pages before building
