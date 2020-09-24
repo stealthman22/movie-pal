@@ -1,5 +1,5 @@
 import React from "react";
 
-const Actor = () => <Actor>Hey I acted this movie</Actor>;
+const Actors = () => <div>Hey I acted this movie</div>;
 
-export default Actor;
+export default Actors;

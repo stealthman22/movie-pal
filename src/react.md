@@ -86,3 +86,23 @@ If you do not want to keep typing out state, it makes sense to destructure it fu
 
 
 - Learn to scaffold pages before building
+
+### Creating a custom hook
+
+
+
+
+
+
+
+- Don't forget the dependency arrays, it's what controls the re-rendering and prevents the infinity loop.
+
+
+
+
+
+
+
+
+
+- implicit return vs explicit return
