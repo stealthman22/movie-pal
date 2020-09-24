@@ -17,15 +17,17 @@ const Movie = ({ movieId }) => {
 	// from useMovieFetch custom hook
 	const [ movie, loading, error ] = useMovieFetch(movieId);
 	console.log(movie);
+
+	if (error) return <div>OOPs... I dunno why that just happened!</div>;
+	if (loading) return <Spinner />;
 	return (
 		<React.Fragment>
-			<Nav />
+			<Nav movie={movie.original_title} />
 			<MovieInfo />
 			<MovieInfoBar />
 			<Grid>
 				<Actors />
 			</Grid>
-			<Spinner />
 		</React.Fragment>
 	);
 };
