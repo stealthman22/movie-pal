@@ -1,102 +1,104 @@
-import styled from 'styled-components';
-import { IMAGE_BASE_URL, BACKDROP_SIZE } from '../../config';
+import styled from "styled-components";
+import { IMAGE_BASE_URL, BACKDROP_SIZE } from "../../config";
 
 export const StyledMovieInfo = styled.div`
-  background: ${props =>
-    props.backdrop
-      ? `url('${IMAGE_BASE_URL}${BACKDROP_SIZE}${props.backdrop}')`
-      : '#000'};
-  background-size: cover !important;
-  background-position: center !important;
-  width: 100%;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  animation: animateMovieinfo 1s;
+	background: ${(props) =>
 
-  .movieinfo-content {
-    max-width: 1280px;
-    min-height: 450px;
-    margin: 0 auto;
-    background: rgb(0, 0, 0, 0.7);
-    border-radius: 20px;
-    position: relative;
-  }
+			props.backdrop ? `url('${IMAGE_BASE_URL}${BACKDROP_SIZE}${props.backdrop}')` :
+			"#000"};
+	background-size: cover !important;
+	background-position: center !important;
+	width: 100%;
+	padding: 40px 20px;
+	box-sizing: border-box;
+	animation: animateMovieinfo 1s;
 
-  .movieinfo-thumb {
-    width: 300px;
-    float: left;
+	.movieinfo-content {
+		max-width: 1280px;
+		min-height: 450px;
+		margin: 0 auto;
+		background: rgb(0, 0, 0, 0.7);
+		border-radius: 20px;
+		position: relative;
+	}
 
-    @media screen and (max-width: 768px) {
-      width: 100% !important;
-    }
-  }
+	.movieinfo-thumb {
+		width: 300px;
+		float: left;
 
-  .movieinfo-text {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 40px;
-    color: #fff;
-    overflow: hidden;
+		@media screen and (max-width: 768px) {
+			width: 100% !important;
+		}
+	}
 
-    h1 {
-      font-family: 'Abel', sans-serif;
-      font-size: 48px;
-      margin: 0;
+	.movieinfo-text {
+		font-family: Arial, Helvetica, sans-serif;
+		padding: 40px;
+		color: #fff;
+		overflow: hidden;
 
-      @media screen and (max-width: 1000px) {
-        font-size: 32px !important;
-      }
-    }
+		h1 {
+			font-family: 'Abel', sans-serif;
+			font-size: 48px;
+			margin: 0;
 
-    h3 {
-      font-size: 16px;
-      line-height: 0;
-      margin-top: 30px;
-    }
+			@media screen and (max-width: 1000px) {
+				font-size: 32px !important;
+			}
+		}
 
-    p {
-      font-family: 'Abel', sans-serif;
-      font-size: 18px;
-      line-height: 26px;
-    }
-  }
+		h3 {
+			font-size: 16px;
+			line-height: 0;
+			margin-top: 30px;
+		}
 
-  .rating-director {
-    display: flex;
-    justify-content: flex-start;
-  }
+		p {
+			font-family: 'Abel', sans-serif;
+			font-size: 18px;
+			line-height: 26px;
+		}
+	}
 
-  .score {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background: #fff;
-    color: #000;
-    font-weight: 800;
-    border-radius: 25px;
-    margin: 0px 0 0 0;
-  }
+	.rating-director {
+		display: flex;
+		justify-content: flex-start;
+		flex-direction: column;
+	}
 
-  .director {
-    margin: 0 0 0 40px;
+	.score {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 35px;
+		height: 35px;
+		background: #fff;
+		color: #000;
+		font-weight: 800;
+		border-radius: 25px;
+		margin: 0px 0 0 0;
+	}
 
-    p {
-      margin: 0;
-    }
-  }
+	.director {
+		display: flex;
+		margin: 0 0 0 0;
 
-  @media screen and (max-width: 768px) {
-    min-height: 600px;
-    height: auto;
-  }
+		p {
+			margin: 0.5rem;
+		}
+	}
 
-  @keyframes animateMovieinfo {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+	@media screen and (max-width: 768px) {
+		min-height: 600px;
+		height: auto;
+	}
+
+	@keyframes animateMovieinfo {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
 `;

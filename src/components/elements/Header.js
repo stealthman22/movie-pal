@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 //  You can use arrow func or regular func for func components
 //  With arrow func, we can use something called the implicit return
@@ -16,7 +17,9 @@ import {
 const Header = () => (
 	<StyledHeader>
 		<div className="header-content">
-			<StyledRMDBLogo src={RMDBLogo} alt="rmdb-logo" />
+			<Link to="/">
+				<StyledRMDBLogo src={RMDBLogo} alt="rmdb-logo" />
+			</Link>
 			<StyledTMDBLogo src={TMDBLogo} alt="tmdb-logo" />
 		</div>
 	</StyledHeader>

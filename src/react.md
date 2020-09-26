@@ -81,3 +81,31 @@ If you do not want to keep typing out state, it makes sense to destructure it fu
 
 
 ### Never create functional state as an object, else this will make setstate a funtion, and throw an error
+
+- Reach router,  should be used for mid level apps with less complex routing systems.
+
+
+- Learn to scaffold pages before building
+
+### Creating a custom hook
+
+
+
+
+
+
+
+- Don't forget the dependency arrays, it's what controls the re-rendering and prevents the infinity loop.
+
+
+
+
+
+
+
+
+
+- implicit return vs explicit return
+
+- props are not seperated by commas
+- what is header props?
