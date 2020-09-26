@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import NoImage from "../images/no_image.jpg";
 
@@ -19,5 +20,9 @@ const Actors = ({ actor }) => (
 		<span className="actor-character">{actor.character}</span>
 	</StyledActor>
 );
+// checking a prop
+Actors.propTypes = {
+	actor: PropTypes.object,
+};
 
 export default Actors;

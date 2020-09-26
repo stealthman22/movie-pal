@@ -1,6 +1,7 @@
 // useref is a hook used to keep immutable values between renders
 import React, { useState, useRef } from "react";
 import FontAwesome from "react-fontawesome";
+import PropTypes from "prop-types";
 
 import {
 	StyledSearchBar,
@@ -41,6 +42,10 @@ const SearchBar = ({ callback }) => {
 			</StyledSearchBarContent>
 		</StyledSearchBar>
 	);
+};
+
+SearchBar.propTypes = {
+	callback: PropTypes.func,
 };
 
 export default SearchBar;

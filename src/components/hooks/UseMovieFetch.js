@@ -15,11 +15,11 @@ export const useMovieFetch = (movieId) => {
 			try {
 				const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
 				const results = await (await fetch(endpoint)).json();
-				console.log(results);
+				// console.log(results);
 				const creditEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
 
 				const creditResult = await (await fetch(creditEndpoint)).json();
-				console.log(creditResult);
+				// console.log(creditResult);
 				const directors = creditResult.crew.filter(
 					(member) => member.job === "Director"
 				);
@@ -45,9 +45,26 @@ export const useMovieFetch = (movieId) => {
 	);
 	useEffect(
 		() => {
-			fetchData();
+			//  using dot notation will force an api fetch rather than local storage fetch
+			//  cos it will think movieId is a property
+			if (localStorage[movieId]) {
+				// change to json and use instead of fetching from api
+				// console.log("Grabbing from local storage");
+				setState(JSON.parse(localStorage[movieId]));
+				setLoading(false);
+			}
+			else {
+				console.log("Grabbing from API");
+				fetchData();
+			}
 		},
-		[ fetchData ]
+		[ fetchData, movieId ]
+	);
+	useEffect(
+		() => {
+			localStorage.setItem(movieId, JSON.stringify(state));
+		},
+		[ movieId, state ]
 	);
 	return [ state, loading, error ];
 };

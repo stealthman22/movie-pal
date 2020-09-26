@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { POPULAR_BASELINE_URL } from "../../config";
 
-export const useHomeFetch = () => {
+export const useHomeFetch = (searchTerm) => {
 	const [ state, setState ] = useState({ movies: [] });
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState(false);
@@ -42,11 +42,32 @@ export const useHomeFetch = () => {
 
 	// trigger fetchMovies func (used lifecycle methods previously)
 	useEffect(() => {
-		fetchMovies(POPULAR_BASELINE_URL);
+		if (sessionStorage.homeState) {
+			// grabbing from session storage if there is
+			// console.log("Grabbing from session storage");
+			setState(JSON.parse(sessionStorage.homeState));
+			setLoading(false);
+		}
+		else {
+			console.log("Grabbing from API");
+			fetchMovies(POPULAR_BASELINE_URL);
+		}
+
 		// empty array is called a dependency array
 		// prevents endpoint from running every render
 		// it runs it once the component is mounted at app start
 	}, []);
+
+	// for session storage
+	useEffect(
+		() => {
+			if (!searchTerm) {
+				// console.log("Writing to session storage");
+				sessionStorage.setItem("homeState", JSON.stringify(state));
+			}
+		},
+		[ searchTerm, state ]
+	);
 
 	return [ { state, loading, error }, fetchMovies ];
 };
