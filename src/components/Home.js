@@ -28,15 +28,14 @@ import { useHomeFetch } from "./hooks/useHomeFetch";
 import NoImage from "./images/no_image.jpg";
 
 const Home = () => {
+	const [ searchTerm, setSearchTerm ] = useState("");
 	const [
 		// state has been destrucured further
 		{ state: { movies, currentPage, totalPages, heroImage }, loading, error },
 		fetchMovies,
-	] = useHomeFetch();
+	] = useHomeFetch(searchTerm);
 	// Let's create a search box state
 	// func state is an array don't forget
-	const [ searchTerm, setSearchTerm ] = useState("");
-	console.log(searchTerm);
 	const searchMovies = (search) => {
 		const endpoint =
 			search ? SEARCH_BASELINE_URL + search :

@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import Noimage from "../images/no_image.jpg";
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 import MovieThumb from "./MovieThumb";
@@ -52,5 +52,11 @@ const MovieInfo = ({ movie }) => (
 		</div>
 	</StyledMovieInfo>
 );
+
+MovieInfo.propTypes = {
+	movies: PropTypes.object,
+	directors: PropTypes.array,
+	producers: PropTypes.array,
+};
 
 export default MovieInfo;

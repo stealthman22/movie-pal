@@ -16,7 +16,7 @@ import { useMovieFetch } from "./hooks/UseMovieFetch";
 const Movie = ({ movieId }) => {
 	// from useMovieFetch custom hook
 	const [ movie, loading, error ] = useMovieFetch(movieId);
-	console.log(movie);
+	// console.log(movie);
 
 	if (error) return <div>OOPs... I dunno why that just happened!</div>;
 	if (loading) return <Spinner />;

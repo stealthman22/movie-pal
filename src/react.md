@@ -109,3 +109,6 @@ If you do not want to keep typing out state, it makes sense to destructure it fu
 
 - props are not seperated by commas
 - what is header props?
+
+- Session storage checks for changes on every visit
+- Local storage persists until it is wiped or browser history is cleared
