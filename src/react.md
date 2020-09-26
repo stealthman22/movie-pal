@@ -106,3 +106,6 @@ If you do not want to keep typing out state, it makes sense to destructure it fu
 
 
 - implicit return vs explicit return
+
+- props are not seperated by commas
+- what is header props?

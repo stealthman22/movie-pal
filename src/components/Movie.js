@@ -23,10 +23,15 @@ const Movie = ({ movieId }) => {
 	return (
 		<React.Fragment>
 			<Nav movie={movie.original_title} />
-			<MovieInfo />
-			<MovieInfoBar />
-			<Grid>
-				<Actors />
+			<MovieInfo movie={movie} />
+
+			<MovieInfoBar
+				time={movie.runtime}
+				budget={movie.budget}
+				revenue={movie.revenue}
+			/>
+			<Grid headers="Actors">
+				{movie.actors.map((actor) => <Actors key={actor.cast_id} actor={actor} />)}
 			</Grid>
 		</React.Fragment>
 	);
