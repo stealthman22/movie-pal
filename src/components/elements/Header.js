@@ -5,7 +5,7 @@ import { Link } from "@reach/router";
 //  With arrow func, we can use something called the implicit return
 //  When you are jus treturning one thing
 
-import RMDBLogo from "../images/reactMovie_logo.png";
+import RMDBLogo from "../images/cover1.png";
 import TMDBLogo from "../images/tmdb_logo.svg";
 
 import {
